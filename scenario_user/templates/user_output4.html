@@ -1,0 +1,16 @@
+{% extends "design.html" %}
+{% block title %}
+Тихое место
+{% endblock %}
+{% block content %}
+<table class="table">
+<tr bgcolor="#FAF0E6">
+    <td>Дата</td>
+</tr>
+{% for element in content %}
+<tr>
+    <td>{{element['del_date']}}</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <style>
+    .all_block{
+            height: 100hv;
+            padding-top:70px;
+            }
+
+    header{
+         width: 100%;
+         height: 70px;
+         background: #DCC1B1;
+         position: fixed;
+    }
+    #text1{
+        position:absolute;
+        top: 90px;
+        left: 50px;
+        font: 50px Plainot;
+        color: #75271c;
+    }
+    #text2{
+        position:absolute;
+        top: 140px;
+        left: 50px;
+        font: 50px Plainot;
+        color: #75271c;
+    }
+    #text3{
+        position:absolute;
+        top: 90px;
+        left: 900px;
+        font: 30px Plainot;
+        color: #000000;
+    }
+    #img1{
+        position:absolute;
+        top: 220px;
+        left: 10px;
+    }
+    #icon {
+        position:absolute;
+        top: 10px;
+        left: 30px;
+    }
+    .title{
+        font: 30px Plainot;
+        padding-top: 20px;
+        margin-left: 100px;
+    }
+    .menu{
+        font: 25px Plainot;
+        list-style: none;
+        position: absolute;
+        top: 23px;
+        right: 100px;
+    }
+    #a{
+      font: 25px Plainot;
+      margin-right: 12px;
+      color: #000000;
+      text-decoration: none;
+    }
+    a:hover {
+        color: #616161;
+    }
+    #h1{
+      font: 40px Plainot;
+      position: absolute;
+      top: 100px;
+      right: 600px;
+      color: #000000;
+}
+    #h2{
+      font: 40px Plainot;
+      position: absolute;
+      top: 100px;
+      left: 400px;
+      right: 400px;
+      color: #000000;
+    }
+    z1{
+      font: 40px Plainot;
+      position: absolute;
+      left: 370px;
+      right: 100px;
+      top: 150px;
+      color: #000000;
+      text-decoration: none;
+    }
+    .table tr:hover {
+	background: #FAF0E6;
+	}
+    </style>
+    <title>
+        {% block title %}
+        quiet.place
+        {% endblock %}
+    </title>
+</head>
+<body>
+<div id="wrap">
+    <header>
+        <img id="icon" src="https://img.icons8.com/ios/50/000000/literature--v1.png"/>
+        <div class="title"><a id = "a" href="/" type="button" name="run_script">Тихое место</a></div>
+        <ul class="menu">
+            {% if session.get('group_name') == None %}
+            <a id = "a" href="/auth/login">Авторизация</a>
+            {% endif %}
+            {% if session.get('group_name') != None %}
+            {% if session.get('group_name')[user_role] != 'unauthorized' %}
+            <a id = "a" href="{{ url_for('clear_session') }}">Выйти из системы</a>
+            <a id = "a" href="{{ url_for('user.greeting') }}">Меню запросов</a>
+            <a id = "a" href="{{ url_for('basket.list_orders') }}">Книги</a>
+<!--            <a id = "a" href="{{ url_for('basket.list_orders') }}">Корзина</a>-->
+            {% endif %}
+            {% endif %}
+        </ul>
+    </header>
+</div>
+
+<div class="container-fluid all_block">
+    {% block content %}
+    {% endblock %}
+</div>
+
+</body>
+</html>
+

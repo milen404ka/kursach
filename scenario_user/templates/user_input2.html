@@ -1,0 +1,12 @@
+{% extends "design.html" %}
+{% block title %}
+Тихое место
+{% endblock %}
+{% block content %}
+<center><h2>Выберите издательство и дату, чтобы увидеть шифры и названия книг, которые поставлялись в этот день:</h2></center>
+<form action="" method="post" style="font: 40px Plainot; position: absolute; top: 250px; left: 230px;">
+    <input type="text" placeholder="Издательство" name="value1">
+    <input type="text" placeholder="Дата" name="value2">
+    <input type="submit" value="Отправить">
+</form>
+{% endblock %}

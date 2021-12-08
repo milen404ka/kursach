@@ -1,0 +1,27 @@
+{% macro render_item(item, show_form=False) %}
+
+<link rel="stylesheet" type="text/css" href="/static/css/basket_style.css">
+
+<div class="product-wrap">
+    <div class="product-item">
+        <img src="{{ item['image'] }}" width="200" height="270">
+        <div class="product-buttons">
+            <a href="" class="button">В корзину</a>
+        </div>
+    </div>
+    <div class="product-title">
+        <div class="product-info">
+            <h3>{{ item['name'] }}</h3>
+            <span>Автор: {{ item['author'] }}</span> <br>
+            <span>Жанр: {{ item['genre'] }}</span> <br><br>
+            <span class="price">₽ {{ item['cost'] }}</span>
+            {% if show_form %}
+            <form action="" method="post">
+                <input type="hidden" name="item_id" value="{{ item['id_b'] }}">
+                <button type="submit" value="Добавить">Добавить</button>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endmacro %}

@@ -1,0 +1,20 @@
+{% extends "design.html" %}
+{% block title %}
+Тихое место
+{% endblock %}
+{% block content %}
+<table class="table">
+<tr bgcolor="#FAF0E6">
+    <td>Код книги</td>
+    <td>Название</td>
+    <td>Цена</td>
+    <td>Количество</td></tr>
+{% for element in content %}
+<tr>
+    <td>{{element['id_b']}}</td>
+    <td>{{element['name']}}</td>
+    <td>{{element['price']}}</td>
+    <td>{{element['quantity']}}</td></tr>
+{% endfor %}
+</table>
+{% endblock %}

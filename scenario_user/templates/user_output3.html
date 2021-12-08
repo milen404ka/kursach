@@ -1,0 +1,23 @@
+{% extends "design.html" %}
+{% block title %}
+Тихое место
+{% endblock %}
+{% block content %}
+<table class="table">
+<tr bgcolor="#FAF0E6">
+    <td>Код издательства</td>
+    <td>Дата поставки</td>
+    <td>Издательство</td>
+    <td>Город</td>
+</tr>
+{% for element in content %}
+<tr>
+    <td>{{element['id_con']}}</td>
+    <td>{{element['con_date']}}</td>
+    <td>{{element['name']}}</td>
+    <td>{{element['city']}}</td>
+
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "design.html" %}
+{% block title %}
+Тихое место
+{% endblock %}
+{% block content %}
+<body class="img js-fullheight" style="background-image: url(/static/images/bg5.svg);">
+<center><h2 id = "h2">Что вы хотите узнать?</h2></center>
+<z1 id = "z1">{% if session.get('group_name') != None %}
+    {% if session.get('group_name')['user_role'] != 'reader' %}
+    <a id = "a" href="{{url_for('user.user_sql1')}}">· Количество книг, поставленных за конкретный год</a>
+    <br>
+    <a id = "a" href="{{url_for('user.user_sql2')}}">· Шифры и названия книг, которые поставлялись в конкретный день</a>
+    {% endif %}
+    {% endif %}
+    {% if session.get('group_name') != None %}
+    {% if session.get('group_name')['user_role'] != 'librarian' %}
+    <br>
+    <a id = "a" href="{{url_for('user.user_sql3')}}">· Сведения об издательствах, которые не поставляли книг в конкретный год</a>
+    <br>
+    <a id = "a" href="{{url_for('user.user_sql4')}}">· Даты, в которые поставлялись книги издательства конкретного города</a>
+    {% endif %}
+    {% endif %}
+</z1>
+</body>
+
+{% endblock %}

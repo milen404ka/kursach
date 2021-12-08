@@ -1,0 +1,25 @@
+{
+  "librarian": [
+    "auth",
+    "edit",
+    "user",
+    "user.user_sql1",
+    "user.user_sql2"
+  ],
+
+  "admin": [
+    "auth", "user", "edit"
+  ],
+
+  "unauthorized": [
+          "auth"
+  ],
+
+  "reader": [
+    "auth",
+    "edit",
+    "user",
+    "user.user_sql3",
+    "user.user_sql4"
+  ]
+}

@@ -1,0 +1,59 @@
+{% extends "design.html" %}
+{% block title %}
+Тихое место: ассортимент
+{% endblock %}
+{% block content %}
+<!--<p align="center">Все товары </p>-->
+{% if items %}
+<br>
+<div align=center>
+    <table class="table" border=0 width=50%>
+        <tr bgcolor="#FAF0E6">
+            {% for head in heads %}
+            <th align="left">{{head}}</th>
+            {% endfor %}
+            <th></th>
+        </tr>
+
+        {% for item in items %}
+        <tr>
+            <td>{{ item['name'] }}</td>
+            <td>{{ item['author'] }}</td>
+            <td>{{ item['genre'] }}</td>
+            <td>{{ item['b_availability'] }}</td>
+            <td>{{ item['cost'] }}</td>
+
+            <td>
+                <form action="" method="post">
+                    {% if session.get('group_name') != None %}
+                    {% if session.get('group_name')['user_role'] == 'admin' %}
+                    <input type="hidden" name="item_id" value="{{ item['id_b'] }}">
+                    <input type="submit" name="action" value="Удалить">
+                    {% endif %}
+                    {% endif %}
+                    {% if session.get('group_name') != None %}
+                    {% if session.get('group_name')['user_role'] != 'admin' %}
+                    <input type="hidden" name="item_id" value="{{ item['id_b'] }}">
+                    <input type="submit" name="action" value="В корзину">
+                    {% endif %}
+                    {% endif %}
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% else %}
+<p>Нет доступных товаров</p>
+{% endif %}
+{% if session.get('group_name') != None %}
+{% if session.get('group_name')['user_role'] == 'admin' %}
+<div align="center">
+    <br>
+    <a href="{{ url_for('edit.insert') }}">Добавить книгу</a>
+    <br>
+</div>
+{% endif %}
+{% endif %}
+{% endblock %}
+
